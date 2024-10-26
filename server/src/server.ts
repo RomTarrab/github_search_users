@@ -1,7 +1,7 @@
 import express from 'express';
 import cors from 'cors';
 import dotenv from 'dotenv';
-import { getGitHubUsers } from './routes';
+import { getGitHubUsers } from './controllers';
 
 dotenv.config();
 
@@ -9,7 +9,7 @@ const app = express();
 const PORT = process.env.PORT || 8080;
 
 const corsOptions = {
-    origin: 'localhost:5173',
+    origin: '*',
     optionsSuccessStatus: 200,
 };
 app.use(cors(corsOptions));

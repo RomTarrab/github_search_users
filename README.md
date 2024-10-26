@@ -2,7 +2,8 @@
 
 Creating a search engine to find GitHub users using React JS and the GitHub API.
 
-## Technologies 
+## Technologies
+
 - React JS
 - Vite JS
 - Typescript
@@ -12,6 +13,7 @@ Creating a search engine to find GitHub users using React JS and the GitHub API.
 <br/>
 
 ## Installation:
+
 <br/>
 
 ### 1. Clone the repository
@@ -19,19 +21,22 @@ Creating a search engine to find GitHub users using React JS and the GitHub API.
 ```bash
  git clone https://github.com/RomTarrab/github_search_users
 <br/>
+```
 
-### 2. Run this command to install the dependencies.
+### 2. Run this command to install the dependencies:
 
 ```bash
  npm install
 ```
-<br/>
 
+<br/>
 
 ### 3. Run this command in both client and server:
 
 ```bash
  npm run dev
 ```
+
 ---
+
 <br/>

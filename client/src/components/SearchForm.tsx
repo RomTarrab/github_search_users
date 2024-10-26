@@ -1,18 +1,15 @@
-import React, { FC } from 'react';
+import { FC } from 'react';
 import { SearchFormProps } from '../interfaces/SearchFormProps.interface';
 
-const SearchForm: FC<SearchFormProps> = ({ query, setQuery, handleSearch, loading }) => (
-    <form onSubmit={handleSearch}>
+const SearchForm: FC<SearchFormProps> = ({ query, onInputChange }) => (
+    <form onSubmit={(e) => e.preventDefault()}>
         <input
             type="text"
             value={query}
-            onChange={(e: React.ChangeEvent<HTMLInputElement>) => setQuery(e.target.value)}
+            onChange={onInputChange}
             placeholder="Search GitHub User..."
             className="searching_input"
         />
-        <button className="search-btn" type="submit" disabled={loading}>
-            {loading ? 'Searching...' : 'Search'}
-        </button>
     </form>
 );
 

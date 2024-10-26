@@ -32,9 +32,6 @@ export const getGitHubUsers = async (req: Request, res: Response): Promise<void>
                     image: user.avatar_url,
                     publicRepos: userDetail.data.public_repos,
                     company: userDetail.data.company,
-                    followers: userDetail.data.followers,
-                    following: userDetail.data.following,
-                    bio: userDetail.data.bio,
                     location: userDetail.data.location
                 };
 
