@@ -1,9 +1,12 @@
 import { FC, useState, useEffect } from 'react';
 import axios from 'axios';
-import GitHubUserCard from './components/GitHubUserCard';
 import { useDebounce } from './hooks/useDebounce.hook';
 import { GitHubUser } from './interfaces/GitHubUser.interface';
 
+import Title from './components/Title';
+import SearchForm from './components/SearchForm';
+import UserList from './components/UserList';
+import PaginationComponent from './components/PaginationComponent';
 import './styles/App.scss';
 
 const App: FC = () => {
@@ -34,6 +37,12 @@ const App: FC = () => {
         });
         setUsers(response.data);
       } catch (error) {
+        if (axios.isAxiosError(error)) {
+          console.log(error.status)
+          console.error(error.response);
+        } else {
+          console.error(error)
+        }
         setError('Error fetching GitHub users. Please try again later.');
       } finally {
         setLoading(false);
@@ -52,41 +61,23 @@ const App: FC = () => {
 
   return (
     <div className='app'>
-      <h1 className='HomePageTitle'>GitHub User Search</h1>
-      <form onSubmit={(e) => e.preventDefault()}>
-        <input
-          type='text'
-          value={query}
-          onChange={handleInputChange} // Use the separate change handler
-          placeholder='Search GitHub User...'
-          className='searching_input'
+      <Title />
+      <SearchForm query={query} onInputChange={handleInputChange} />
+      <UserList
+        users={users}
+        loading={loading}
+        error={error}
+        query={debouncedQuery}
+      />
+      {debouncedQuery && users.length > 0 && (
+        <PaginationComponent
+          currentPage={page}
+          onNextPage={handleNextPage}
+          onPreviousPage={handlePreviousPage}
+          isNextDisabled={loading || users.length < perPage}
+          isPreviousDisabled={page === 1 || loading}
         />
-        {/* <button className='search-btn' type='submit' disabled={loading}>
-          {loading ? 'Searching...' : 'Search'}
-        </button> */}
-      </form>
-
-      {error && <div className='error-message'>{error}</div>}
-
-      <div className="list-of-users">
-        {loading && <p>Loading users...</p>}
-        {!loading && users.length === 0 && debouncedQuery && (
-          <p className='no-results'>No users found. Try searching for a different term.</p>
-        )}
-        {users.map((user) => (
-          <GitHubUserCard key={user.username} userInfo={user} />
-        ))}
-      </div>
-
-      <div className="pagination-controls">
-        <button onClick={handlePreviousPage} disabled={page === 1 || loading}>
-          Previous
-        </button>
-        <span>Page {page}</span>
-        <button onClick={handleNextPage} disabled={loading || users.length < perPage}>
-          Next
-        </button>
-      </div>
+      )}
     </div>
   );
 };

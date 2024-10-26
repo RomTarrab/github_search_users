@@ -5,10 +5,6 @@ import "../styles/userCard.scss"
 
 const GitHubUserCard: FC<{ userInfo: GitHubUser }> = ({ userInfo }) => {
 
-    const truncatedBio = userInfo.bio && userInfo.bio.length > 100
-        ? userInfo.bio.slice(0, 30) + '...'
-        : userInfo.bio || 'This profile has no bio';
-
     return (
         <div className="user-card">
             <div className="user-details-left">
@@ -29,11 +25,10 @@ const GitHubUserCard: FC<{ userInfo: GitHubUser }> = ({ userInfo }) => {
             </div>
 
             <div className="user-details-right">
-                <p>{truncatedBio}</p>
                 <p>Public Repos: {userInfo.publicRepos}</p>
                 <div className="icons_section">
-                    <p>{userInfo.company ? userInfo.company : "Company Not Available"}</p>
-                    <p>{userInfo.location ? userInfo.location : 'Location Not Available'}</p>
+                    <p>{userInfo.company || "Company Not Available"}</p>
+                    <p>{userInfo.location || 'Location Not Available'}</p>
                 </div>
             </div>
 

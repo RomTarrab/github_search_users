@@ -15,25 +15,3 @@ main {
   margin: 1em auto;
   min-height: 70vh;
 }
-
-h1 {
-  text-align: center;
-  font-size: 4rem;
-  font-weight: bold;
-  line-height: 4.5rem;
-  border-bottom: 3px solid #0000001c;
-  padding-bottom: 1rem;
-}
-
-.no-results,
-.loading {
-  margin-top: 2rem;
-  display: block;
-  text-align: center;
-  min-height: 7rem;
-  display: flex;
-  justify-content: center;
-  font-size: 2rem;
-  align-items: center;
-  font-family: 'Montserrat', sans-serif;
-}

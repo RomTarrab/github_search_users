@@ -1,44 +1,10 @@
-// .user-card {
-//     width: 100%;
-//     display: flex;
-//     flex-direction: row;
-//     justify-content: space-evenly;
-
-//     padding: 0.5rem 0rem;
-//     border: 1px solid #ddd;
-//     border-radius: 10px;
-
-//     .user-details-right {
-//         text-align: left;
-//     }
-
-//     .user-details-left {
-//         .profile-image {
-//             border-radius: 50%;
-//             width: 12vw;
-//         }
-//     }
-
-//     a {
-//         font-weight: 500;
-//         color: #646cff;
-//         text-decoration: inherit;
-//     }
-
-//     a:hover {
-//         color: #535bf2;
-//     }
-// }
-
 .user-card {
-    width: 20%;
     display: flex;
     justify-content: center;
     align-items: center;
     gap: 1.7rem;
     text-align: center;
     border-radius: 5px;
-    width: fit-content;
     overflow: hidden;
     position: relative;
     padding: 1em 3rem;
@@ -68,8 +34,15 @@
     }
 }
 
-// @media screen and (min-width: 768px) {
-//     .container {
-//       padding-top: 14rem;
-//     }
-//   }
+@media screen and (min-width: 768px) {
+    .user-card {
+        width: 30vw;
+    }
+}
+
+@media screen and (max-width: 768px) {
+    .user-card {
+        width: 92vw;
+        gap: 3vw;
+    }
+}
