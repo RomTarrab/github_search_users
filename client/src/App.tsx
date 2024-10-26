@@ -26,6 +26,7 @@ const App: FC = () => {
     const fetchUsers = async () => {
       setLoading(true);
       setError(null);
+      setUsers([]);
 
       try {
         const response = await axios.get(`http://localhost:8080/api/search_github_users`, {
